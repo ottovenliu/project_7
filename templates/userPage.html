@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/style/bannerTop.css?v=<?=time()?>" type="text/css">
+    <link rel="stylesheet" href="../static/style/main.css?v=<?=time()?>" type="text/css">
+    <!-- <script type="text/javascript" src="../static/js/rawData.js"></script> -->
+</head>
+
+<body>
+    <nav>
+        <div class="bannerTop">
+            <div class="bannerBox">
+                <div class="bannerContent">
+                    會員中心
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="signInBox">
+            {{user_template}} 歡迎回來
+            <form action="/sigout">
+                <div class="signButton" id="signOut">
+                    <input type="button" style="width:40%;" value="登出" onclick="javascript:location.href='/signout'">
+                </div>
+            </form>
+        </div>
+        <div class="searchBox">
+            查詢會員姓名
+            <form name="searchForm" id="searchForm">
+                <input type="text" id="searchName" name="searchName" style="width: 80%;" placeholder="請輸入查詢帳號">
+                <input type='button' name='submit' value='送出' onclick='formDatabox();' />
+
+            </form>
+
+
+        </div>
+        <div class="searchBox" id="searchresult">
+            {{user_template}}
+        </div>
+
+    </main>
+
+</body>
+
+<script type="text/javascript" src="../static/js/rawData.js"></script>
+
+</html>

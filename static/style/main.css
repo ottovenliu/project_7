@@ -1,0 +1,65 @@
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    flex-direction: column;
+}
+.userTable{
+    flex: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;   
+    flex-direction: column;
+}
+.signInBox{
+    flex: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;   
+    flex-direction: column;
+    text-align: center;
+    height: 200px;
+    max-height: 200px;
+}
+
+
+.signUpBox{
+    flex: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;   
+    flex-direction: column;
+    height: 200px;
+    max-height: 200px;
+}
+.userInfo{
+    flex: none;
+    width: 400px;   
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+}
+.signButton{
+    flex: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+}
+#searchForm{
+    flex: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;  
+    text-align: center; 
+}
+.searchBox{
+    flex: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;   
+    flex-direction: column;
+    text-align: center;
+    height: 50px;
+    max-height: 50px;
+}
