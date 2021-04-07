@@ -12,7 +12,7 @@ function formDatabox() {
     const name = form.elements.searchName.value;
     if (contextArea["data"]["username"].indexOf(name) >= 0) {
         var box = document.getElementById('searchresult');
-        box.textContent = contextArea["data"]["name"];
+        box.textContent = contextArea["data"]["name"] + "(" + contextArea["data"]["username"] + ")";
         // document.getElementById("searchresult").innerHTML = contextArea["data"]["name"];
         alert(contextArea["data"]["name"])
     }
