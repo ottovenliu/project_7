@@ -1,4 +1,5 @@
 from re import search
+import flask
 import mysql.connector
 from flask import Flask
 from flask import request, redirect
@@ -145,7 +146,6 @@ def API():
                 box = []
                 for username in user_info["data"]:
                     box.append(username["username"])
-                print(box)
                 if message in box:
                     searchEnd = user_info["data"][box.index(message)]
                     searchEnd_json = json.dumps(searchEnd, ensure_ascii=False)
@@ -158,6 +158,7 @@ def API():
                         user_info, ensure_ascii=False)
 
                     return userInfo_json
+                    # return flask.jsonify(userInfo_json)
 
             else:
                 return userInfo_json
