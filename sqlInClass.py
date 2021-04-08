@@ -14,8 +14,25 @@ mycursor.execute(sql)
 myresult = mycursor.fetchall()
 print(myresult[0][2])
 print(myresult[0])
-# print(myresult)
+print(myresult)
 print("------------------分界線1--------------------")
+user_info = {
+    "data": []
+    # "id": myresult[0][0],
+    # "name": myresult[0][1],
+    # "username": myresult[0][2]
+}
+for userdata in myresult:
+    userdatabox = {
+        "id": userdata[0],
+        "name": userdata[1],
+        "username": userdata[2]
+    }
+    user_info["data"].append((userdatabox))
+
+# print(userdata["data"])
+
+
 # print(type(myresult))
 
 # if myresult[1][2] == text:
@@ -23,6 +40,7 @@ print("------------------分界線1--------------------")
 # userdatainfo = list(myresult[0])
 # print(userdatainfo)
 print("------------------分界線2--------------------")
+print(user_info["data"][1]["id"])
 # for i in myresult:
 #     a = myresult[i]
 #     list(a)
