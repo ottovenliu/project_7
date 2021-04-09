@@ -122,53 +122,76 @@ def userpage():
 def API():
     check_username = session.get('username')
     if check_username:
+        message = request.args.get("username", "")
+        message.encode('utf-8')
         mycursor = mydb.cursor()
-        sql_json = "SELECT id,name,username FROM user"
+        sql_json = "SELECT id,name,username FROM user WHERE username = '{username_db}'".format(
+            username_db=message)
         mycursor.execute(sql_json)
         myresult = mycursor.fetchall()
+        print(sql_json)
+        print(myresult)
+        print(myresult)
         if len(myresult) != 0:
             user_info = {
-                "data": []
-            }
-            for userdata in myresult:
-                userdatabox = {
-                    "id": userdata[0],
-                    "name": userdata[1],
-                    "username": userdata[2]
+                "data": {
+                    "id": myresult[0][0],
+                    "name": myresult[0][1],
+                    "username": myresult[0][2]
                 }
-                user_info["data"].append((userdatabox))
+            }
+            userInfo_json = json.dumps(
+                user_info, ensure_ascii=False)
 
-            userInfo_json = json.dumps(user_info, ensure_ascii=False)
+            return userInfo_json
 
-            message = request.args.get("username", "")
-            message.encode('utf-8')
-            if len(message) != 0:
-                box = []
-                for username in user_info["data"]:
-                    box.append(username["username"])
-                if message in box:
-                    searchEnd = user_info["data"][box.index(message)]
-                    searchEnd_json = json.dumps(searchEnd, ensure_ascii=False)
-                    return searchEnd_json
-                else:
-                    user_info = {
-                        "data": "null"
-                    }
-                    userInfo_json = json.dumps(
-                        user_info, ensure_ascii=False)
-
-                    return userInfo_json
-                    # return flask.jsonify(userInfo_json)
-
-            else:
-                return userInfo_json
+            # for userdata in myresult:
+            #     userdatabox = {
+            #         "id": userdata[0],
+            #         "name": userdata[1],
+            #         "username": userdata[2]
+            #     }
+            #     user_info["data"].append((userdatabox))
         else:
             user_info = {
                 "data": "null"
             }
-            userInfo_json = json.dumps(user_info, ensure_ascii=False)
+            userInfo_json = json.dumps(
+                user_info, ensure_ascii=False)
 
             return userInfo_json
+
+        #     userInfo_json = json.dumps(user_info, ensure_ascii=False)
+
+        #     message = request.args.get("username", "")
+        #     message.encode('utf-8')
+        #     if len(message) != 0:
+        #         box = []
+        #         for username in user_info["data"]:
+        #             box.append(username["username"])
+        #         if message in box:
+        #             searchEnd = user_info["data"][box.index(message)]
+        #             searchEnd_json = json.dumps(searchEnd, ensure_ascii=False)
+        #             return searchEnd_json
+        #         else:
+        #             user_info = {
+        #                 "data": "null"
+        #             }
+        #             userInfo_json = json.dumps(
+        #                 user_info, ensure_ascii=False)
+
+        #             return userInfo_json
+        #             # return flask.jsonify(userInfo_json)
+
+        #     else:
+        #         return userInfo_json
+        # else:
+        #     user_info = {
+        #         "data": "null"
+        #     }
+        #     userInfo_json = json.dumps(user_info, ensure_ascii=False)
+
+        #     return userInfo_json
     else:
         return redirect('/')
 
